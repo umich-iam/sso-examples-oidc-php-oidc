@@ -58,7 +58,7 @@ The issues to address:
 
 - You need to fill in the correct details for the `OpenIDConnectClient` call.  ClientID and ClientSecret are obtained via the self-provisioning process in the OPaM tool.  The correct Provider URL for U-M is 'https://shibboleth.umich.edu/'.
 
-- The jumbojett library supports the Client Authentication method `client_secret_basic` by default.  The OPaM tool default is `client_secret_post` and does not yet allow the option of selecting another method when provisioning OIDC service client credentials.  There is a workaround documented in[Issue #120](https://github.com/jumbojett/OpenID-Connect-PHP/issues/120) in the GitHub repository which can be added to the code to address this issue.
+- The jumbojett library supports the Client Authentication method `client_secret_basic` by default.  The OPaM tool default is `client_secret_post` and does not yet allow the option of selecting another method when provisioning OIDC service client credentials.  There is a code change required to explicitly set the Client Authentication method to `client_secret_post`.
 
 - Need to replace `given_name` with `sub` in the call to `requestUserInfo` to set the name.
 
@@ -76,9 +76,7 @@ $oidc = new OpenIDConnectClient(
     'YYYYYYYYYYYYYYYYYYYYYYYYYY'
 );
 
-$oidc->providerConfigParam([
-    'token_endpoint_auth_methods_supported' => []
-]);
+$oidc->setTokenEndpointAuthMethodsSupported(['client_secret_post']);
 
 $oidc->authenticate();
 $name = $oidc->requestUserInfo('sub');
