@@ -50,7 +50,6 @@ $oidc = new OpenIDConnectClient(
 
 $oidc->authenticate();
 $name = $oidc->requestUserInfo('given_name');
-
 ...
 ```
 
@@ -60,7 +59,7 @@ The issues to address:
 
 - The jumbojett library supports the Client Authentication method `client_secret_basic` by default.  The OPaM tool default is `client_secret_post` and does not yet allow the option of selecting another method when provisioning OIDC service client credentials.  There is a code change required to explicitly set the Client Authentication method to `client_secret_post`.
 
-- Need to replace `given_name` with `sub` in the call to `requestUserInfo` to set the name.
+- Need to add explicit scopes (`openid email profile edumember`) to optimize for U-M OIDC environment, otherwise it will default to `openid` only.
 
 The resulting code should look like this (note the ClientID and ClientSecret are obscured here and should be filled in with your site's actual values):
 
@@ -78,9 +77,10 @@ $oidc = new OpenIDConnectClient(
 
 $oidc->setTokenEndpointAuthMethodsSupported(['client_secret_post']);
 
-$oidc->authenticate();
-$name = $oidc->requestUserInfo('sub');
+$oidc->addScope('openid email profile edumember');
 
+$oidc->authenticate();
+$name = $oidc->requestUserInfo('given_name');
 ...
 ```
 
