@@ -1,0 +1,21 @@
+version: '3.8'
+
+networks:
+  default:
+    name: 'jumbojett-network'
+
+services:
+
+  jumbojett:
+    image: 'jumbojett:latest'
+    container_name: 'jumbojett-app'
+    build:
+      context:    '.'
+      dockerfile: 'Dockerfile'
+    restart: on-failure
+    ports:
+      - '80:80/tcp'
+      - '443:443/tcp'
+    env_file:
+      - 'docker-compose.env'
+
