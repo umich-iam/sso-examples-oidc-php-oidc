@@ -89,7 +89,7 @@ $name = $oidc->requestUserInfo('given_name');
 
 Navigate to `https://my.site.url/client_example.php` (substitute `my.site.url` with the fully qualified domain name (FQDN) for your site).  You should be automatically redirected to U-M Weblogin for single sign-on authentication.  Upon successful authentication, you should see `Hello uniqname` (where `uniqname` is your U-M username you authenticated as).
 
-An example has been provided for demonstration purposes.  To use:
+A docker example has been provided for demonstration purposes.  To use:
 - replace `server.key` with a valid key
 - replace `server.crt` with a valid web cert
 - Fill in the variables in `docker-compose.env` with your OIDC Client ID and Secret
