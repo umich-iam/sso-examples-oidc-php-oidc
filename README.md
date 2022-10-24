@@ -92,7 +92,8 @@ Navigate to `https://my.site.url/client_example.php` (substitute `my.site.url` w
 A docker example has been provided for demonstration purposes.  To use:
 - replace `server.key` with a valid key
 - replace `server.crt` with a valid web cert
-- Fill in the variables in `docker-compose.env` with your OIDC Client ID and Secret
+- Edit `server.conf` Replace `SERVER` on the `ServerName` line with your example service name, matching the CN in your `server.crt`
+- Fill in the variables in `docker-compose.env` with your OIDC Client ID and Secret that have been provisioned
 - `docker-compose build` or `docker compose build` (depending on which docker-compose you have installed)
 - `docker-compose up -d` or `docker compose up -d` (depending, same as prior)
 
