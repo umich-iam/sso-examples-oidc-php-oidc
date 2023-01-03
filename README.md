@@ -22,6 +22,12 @@ After you have the above components created for you and configured, you can set 
 
     `cp OpenID-Connect-PHP/client_example.php [document root]/.`
 
+- Use [Composer](https://getcomposer.org) to install the JumboJett OpenID Connect PHP library in your application's document root.  If you web application resides in AFS, you can use the version of Composer that is already installed on the ITS Web Hosting login server, `umpire.dsc.umich.edu` (you will need to activate the version of PHP your app uses after you log in).
+ 
+    `cd [document root]`
+
+    `composer require jumbojett/openid-connect-php`
+
 - Obtain OIDC Service Client credentials
 
 You can self-provision OIDC Service Client credentials using the "OIDC Provisioning and Management" (OPaM) tool as documented in the following ITS KNowledge Base article:
