@@ -4,7 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Jumbojett\OpenIDConnectClient;
 
-$oidc_idp = 'https://shibboleth.umich.edu/';
+$oidc_idp = 'https://weblogin.umich.edu/';
 $oidc_client_id = getenv('OIDC_CLIENT_ID');
 $oidc_client_secret = getenv('OIDC_CLIENT_SECRET');
 
